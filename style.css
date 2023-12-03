@@ -1,73 +1,91 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: white;
-    padding: 0;
-    margin: 0;
   }
   
-  nav {
-    position: absolute;
-    height: 100vh;
+  .chat-container {
+    width: 700px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    width: 52px;
-    background-color: #222;
-    overflow: hidden;
-  
-    transition: width 0.3s;
-  }
-  nav:hover {
-    width: 400px;
-  }
-  
-  nav .bar {
-    background-color: black;
-    color: white;
-    display: flex;
     justify-content: end;
-  }
-  
-  nav .user {
-    color: white;
-    text-align: center;
-    padding: 20px 0;
-    font-size: 30px;
-    height: 180px;
-    transform: translateX(-300px);
-    opacity: 0;
-    transition: transform 0.2s ease, opacity 0.2s ease;
-  }
-  nav:hover .user {
-    transform: translateX(0);
-    opacity: 1;
-  }
-  
-  nav .user img {
-    width: 100px;
-    margin: 0 auto;
-    border-radius: 50%;
-  }
-  
-  nav .links {
-  }
-  
-  nav .links a {
-    color: white;
-    text-decoration: none;
-    display: flex;
+    height: 100vh;
+    background-color: #233f52;
+    box-sizing: border-box;
     gap: 10px;
-    align-items: center;
-    width: 400px;
-    overflow: hidden;
+    padding: 30px;
   }
-  nav .links a:hover {
-    background-color: rgb(31, 135, 205);
+  .chat-container .bubble-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .chat-container .bubble-container.left {
+    width: 50%;
+    margin-right: auto;
+  }
+  .chat-container .bubble-container.right {
+    width: 50%;
+    margin-left: auto;
+    align-items: flex-end;
+  }
+  
+  .chat-container
+    .bubble-container.left
+    .bubble:nth-child(1)
+    .bubble-text
+    > div::before {
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    border-right: solid 5px #202c33;
+    border-top: solid 5px #202c33;
+    border-left: solid 5px transparent;
+    border-bottom: solid 5px transparent;
+    left: -9px;
+    top: 0;
+  }
+  .chat-container
+    .bubble-container.right
+    .bubble:nth-child(1)
+    .bubble-text
+    > div::before {
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    border-left: solid 5px #005c4b;
+    border-top: solid 5px #005c4b;
+    border-right: solid 5px transparent;
+    border-bottom: solid 5px transparent;
+    right: -8px;
+    top: 0;
+  }
+  .chat-container .bubble-container .bubble .bubble-text {
     color: white;
   }
   
-  nav .links a .icon {
-    padding: 10px;
+  .chat-container .bubble-container.right .bubble .bubble-text > div {
+    position: relative;
+    background-color: #005c4b;
+  }
+  
+  .chat-container .bubble-container.left .bubble .bubble-text > div {
+    position: relative;
+    background-color: #202c33;
+  }
+  
+  .chat-container .bubble-container .bubble .bubble-text > div {
+    padding: 8px;
+    border-radius: 5px;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+  .chat-container .bubble-container .bubble .bubble-text .bubble-info {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 5px 10px;
+    text-align: right;
+    width: 80px;
   }
